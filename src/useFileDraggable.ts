@@ -32,25 +32,29 @@ export const useFileDraggable = () => {
 
   const getDroppableProps = ({ directoryId, onDragover }: GetDroppableParams) => ({
     onDragenter(event: DragEvent) {
+      //进入时添加拖放样式
       applyDragoverMark(event.target as HTMLElement)
     },
     onDragleave(event: DragEvent) {
+      //离开时移除拖放样式
       removeDragoverMark(event.target as HTMLElement)
     },
     onDragover(event: DragEvent) {
+      //阻止默认行为，以启用 drop 事件
       event.preventDefault()
       onDragover?.(event)
     },
     onDrop(event: DragEvent) {
-      removeDragoverMark(event.target as HTMLElement)
-      clearSelected()
-
       alert(
         `Dropped ${Array.from(
           selectedItems.value,
           ([, value]) => `${value.type} ${value.value}`
         ).join('、')} into directory ${directoryId}`
       )
+
+      //移除拖放样式
+      removeDragoverMark(event.target as HTMLElement)
+      clearSelected()
     }
   })
 

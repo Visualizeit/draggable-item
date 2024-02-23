@@ -31,5 +31,7 @@ const expandedKeys = ref<string[]>([])
 </template>
 
 <style scoped>
-
+:deep(.n-menu-item:has([data-dragover='true'])) {
+  background-color: red;
+}
 </style>

@@ -17,26 +17,19 @@ export const menuOptions: MenuOption[] = [
   },
   {
     label: '寻羊冒险记',
-    key: 'a-wild-sheep-chase',
+    key: 'a-wild-sheep-chase'
   },
   {
     label: '舞，舞，舞',
     key: 'dance-dance-dance',
     children: [
       {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator'
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man'
-          }
-        ]
+        label: '叙事者',
+        key: 'narrator'
+      },
+      {
+        label: '羊男',
+        key: 'sheep-man'
       },
       {
         label: '饮品',

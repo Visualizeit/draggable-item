@@ -1,13 +1,10 @@
 import { ref } from 'vue'
-import { z } from 'zod'
 import { defineStore } from 'pinia'
 
-export const SelectedDataSchema = z.object({
-  type: z.enum(['file', 'directory']),
-  value: z.string()
-})
-
-export type SelectedData = z.TypeOf<typeof SelectedDataSchema>
+export interface SelectedData {
+  type: 'file' | 'directory'
+  value: string
+}
 
 export const useSelectedStore = defineStore('selected', () => {
   const selectedItems = ref(new Map<string, SelectedData>())
