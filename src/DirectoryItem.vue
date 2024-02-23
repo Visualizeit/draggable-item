@@ -1,19 +1,30 @@
 <script lang="ts" setup>
-import { getDraggableProps, getDroppableProps } from './draggingUtil'
+import { useFileDraggable } from './useFileDraggable'
+import { useSelectedStore } from './useSelectedStore'
 
-const props = defineProps<{
+defineProps<{
   directoryId: string
 }>()
+
+const { isSelected } = useSelectedStore()
+const { getDraggableProps, getDroppableProps } = useFileDraggable()
 </script>
 
 <template>
   <div
     class="size-20 bg-green-500 text-white"
     v-bind="{
-      ...getDraggableProps({ type: 'directory', value: props.directoryId }),
-      ...getDroppableProps({ directoryId: props.directoryId })
+      ...getDraggableProps({ type: 'directory', value: directoryId }),
+      ...getDroppableProps({ directoryId })
     }"
   >
-    文件夹{{ props.directoryId }}
+    文件夹{{ directoryId }}
+    <input type="checkbox" :checked="isSelected(directoryId)" />
   </div>
 </template>
+
+<style scoped>
+[data-dragover='true'] {
+  background-color: red;
+}
+</style>

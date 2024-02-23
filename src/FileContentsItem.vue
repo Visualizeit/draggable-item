@@ -1,20 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { getDroppableProps } from './draggingUtil'
+import { useFileDraggable } from './useFileDraggable'
 
 const props = defineProps<{
   directoryId: string
 }>()
 
-const itemRef = ref<HTMLElement | null>(null)
+const { getDroppableProps } = useFileDraggable()
 </script>
 
 <template>
-  <div
-    ref="itemRef"
-    class="p-2 m-2 bg-white"
-    v-bind="getDroppableProps({ directoryId: props.directoryId })"
-  >
+  <div class="p-2 m-2 bg-white" v-bind="getDroppableProps({ directoryId })">
     目录{{ props.directoryId }}
   </div>
 </template>

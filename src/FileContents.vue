@@ -1,13 +1,35 @@
 <script setup lang="ts">
-import FileContentsItem from './FileContentsItem.vue'
+import { ref } from 'vue'
+import { NMenu } from 'naive-ui'
+import { menuOptions } from './menuOptions'
+import { useFileDraggable } from './useFileDraggable'
 
-const data = [1, 2, 3, 4, 5, 6]
+const { getDroppableProps } = useFileDraggable()
+
+const expandedKeys = ref<string[]>([])
 </script>
 
 <template>
   <div class="bg-gray-100 w-40">
-    <FileContentsItem v-for="item in data" :key="item" :directoryId="item.toString()" />
+    <NMenu
+      v-model:expandedKeys="expandedKeys"
+      :options="menuOptions"
+      :nodeProps="
+        (option) => ({
+          ...getDroppableProps({
+            directoryId: option.label as string,
+            onDragover: () => {
+              if (!expandedKeys.includes(option.key as string)) {
+                expandedKeys.push(option.key as string)
+              }
+            }
+          })
+        })
+      "
+    />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
