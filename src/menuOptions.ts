@@ -3,11 +3,7 @@ import { type MenuOption } from 'naive-ui'
 export const menuOptions: MenuOption[] = [
   {
     label: '且听风吟',
-    key: 'hear-the-wind-sing'
-  },
-  {
-    label: '1973年的弹珠玩具',
-    key: 'pinball-1973',
+    key: 'hear-the-wind-sing',
     children: [
       {
         label: '鼠',
@@ -16,8 +12,24 @@ export const menuOptions: MenuOption[] = [
     ]
   },
   {
+    label: '1973年的弹珠玩具',
+    key: 'pinball-1973',
+    children: [
+      {
+        label: '虎',
+        key: 'tiger'
+      }
+    ]
+  },
+  {
     label: '寻羊冒险记',
-    key: 'a-wild-sheep-chase'
+    key: 'a-wild-sheep-chase',
+    children: [
+      {
+        label: '龙',
+        key: 'dragon'
+      }
+    ]
   },
   {
     label: '舞，舞，舞',

@@ -55,6 +55,8 @@ export const useFileDraggable = () => {
       //移除拖放样式
       removeDragoverMark(event.target as HTMLElement)
       clearSelected()
+
+      event.stopPropagation()
     }
   })
 
